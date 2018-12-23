@@ -63,11 +63,11 @@ drugs_df =mean_tumor_volume_df.pivot_table('Tumor Volume (mm3)', ['Timepoint'], 
 drugs_df
 
 
-# In[316]:
+# In[346]:
 
 
 # Generate the Plot (with Error Bars)
-drugs_plot_df = drugs_df[['Capomulin','Ceftamin', 'Ketapril', 'Infubinol']].copy()
+drugs_plot_df = drugs_df[['Capomulin','Infubinol', 'Ketapril', 'Placebo']].copy()
 styles = ['ro:','b^:','gs:','kD:']
 fig1 = drugs_plot_df.plot(kind='line', title='Tumor Response to Treatment', grid='On', legend=True, style=styles)
 fig1.set_xlabel('Time(Days)')
@@ -117,11 +117,11 @@ drugs_met_df =mean_met_sites_df.pivot_table('Metastatic Sites', ['Timepoint'], '
 drugs_met_df.head()
 
 
-# In[321]:
+# In[347]:
 
 
 # Generate the Plot (with Error Bars)
-drugs_met_plot_df = drugs_met_df[['Capomulin','Ceftamin', 'Ketapril', 'Infubinol']].copy()
+drugs_met_plot_df = drugs_met_df[['Capomulin','Infubinol', 'Ketapril', 'Placebo']].copy()
 styles = ['ro:','b^:','gs:','kD:']
 #labels = ['Capomulin','Ceftamin', 'Ketapril', 'Infubinol']
 fig2 = drugs_met_plot_df.plot(kind='line', title='Metastatic Spread During Treatment', grid='On', legend=True, style=styles)
@@ -208,7 +208,7 @@ per_change_df['Drug'] = per_change_df['Drug'] * 100
 per_change_df.rename(columns={'Drug': ''})
 
 
-# In[342]:
+# In[345]:
 
 
 # Store all Relevant Percent Changes into a Tuple
@@ -252,6 +252,7 @@ plt.bar(np.arange(len(xlabels)),
         data, align='center',
         color = ['red' if data[r] > 0 else 'green' for r in np.arange(len(xlabels))]
        )
+
 #print(fig1)
 # Save the Figure
 #fig1 = fig1.get_figure()
